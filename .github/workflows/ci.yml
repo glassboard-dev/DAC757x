@@ -31,12 +31,6 @@ jobs:
     - name: Build - LIB
       run: cd build && make -j8
 
-    - name: Setup cmake - DEMO
-      run: cd template/build && cmake ..
-
-    - name: Build - DEMO
-      run: cd template/build && make -j8
-
     - name: Run Unit tests
       run: cd build && make tests
 
