@@ -41,9 +41,9 @@ jobs:
 
     - name: Extract Firmware Version
       run: |
-        echo "VERSION_MAJOR=$(cat inc/ad5697r.h | grep VERSION_MAJOR | awk '{print $3}')" >> $GITHUB_ENV
-        echo "VERSION_MINOR=$(cat inc/ad5697r.h | grep VERSION_MINOR | awk '{print $3}')" >> $GITHUB_ENV
-        echo "VERSION_PATCH=$(cat inc/ad5697r.h | grep VERSION_PATCH | awk '{print $3}')" >> $GITHUB_ENV
+        echo "VERSION_MAJOR=$(cat src/dac757x.h | grep VERSION_MAJOR | awk '{print $3}')" >> $GITHUB_ENV
+        echo "VERSION_MINOR=$(cat src/dac757x.h | grep VERSION_MINOR | awk '{print $3}')" >> $GITHUB_ENV
+        echo "VERSION_PATCH=$(cat src/dac757x.h | grep VERSION_PATCH | awk '{print $3}')" >> $GITHUB_ENV
 
     - uses: ncipollo/release-action@v1
       with:
