@@ -1,0 +1,49 @@
+name: CI - Compile & Test
+
+on:
+  push:
+    branches:
+      - develop
+
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install Ruby & Ceedling
+      run:  |
+        sudo apt-get install ruby
+        sudo gem install ceedling
+        sudo python -m pip install gcovr
+
+    - name: Create build directory
+      run: |
+        mkdir -p build
+        mkdir -p template/build
+
+    - name: Setup cmake - LIB
+      run: cd build && cmake ..
+
+    - name: Build - LIB
+      run: cd build && make -j8
+
+    - name: Setup cmake - DEMO
+      run: cd template/build && cmake ..
+
+    - name: Build - DEMO
+      run: cd template/build && make -j8
+
+    - name: Run Unit tests
+      run: cd build && make tests
+
+    - uses: codecov/codecov-action@v1
+      with:
+        token: ${{ secrets.CODECOV_DAC757x_TOKEN }}
+        name: CodeCov-DAC757x # optional
+        files: ./build/artifacts/gcov/GcovCoverageCobertura.xml
+        fail_ci_if_error: true # optional (default = false)
+        verbose: true # optional (default = false)
