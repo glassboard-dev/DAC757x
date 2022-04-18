@@ -36,7 +36,7 @@ dac757x_return_code_t dac757x_writeChannel(dac757x_dev_t *dev, dac757x_output_ch
     if(NULL == dev) {
         return DAC757x_RET_NULL_PTR;
     }
-    else if(ch >= DAC757x_OUTPUT_CH__MAX__) {
+    else if((ch >= DAC757x_OUTPUT_CH__MAX__) || (val > DAC757x_MAX_COUNTS)) {
         return DAC757x_RET_INV_PARAM;
     }
 

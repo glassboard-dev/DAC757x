@@ -8,9 +8,10 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#define dac757x_VERSION_MAJOR 0 /*! @brief VERSION MAJOR */
-#define dac757x_VERSION_MINOR 1 /*! @brief VERSION MINOR */
-#define dac757x_VERSION_PATCH 0 /*! @brief VERSION PATH */
+#define dac757x_VERSION_MAJOR   0 /*! @brief VERSION MAJOR */
+#define dac757x_VERSION_MINOR   1 /*! @brief VERSION MINOR */
+#define dac757x_VERSION_PATCH   0 /*! @brief VERSION PATH */
+#define DAC757x_MAX_COUNTS      4095 /*! @brief DAC MAX counts */
 
 /*!
  * @brief This function pointer API reads I2C data from the specified

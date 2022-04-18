@@ -78,3 +78,10 @@ void test_dac757x_writeChannel_InvalidChannel(void) {
 
     TEST_ASSERT_EQUAL_INT(DAC757x_RET_INV_PARAM, ret);
 }
+
+void test_dac757x_writeChannel_InvalidCounts(void) {
+    // Execute the function under test
+    dac757x_return_code_t ret = dac757x_writeChannel(&dac757x_device, DAC757x_OUTPUT_CH_1, DAC757x_MAX_COUNTS+1);
+
+    TEST_ASSERT_EQUAL_INT(DAC757x_RET_INV_PARAM, ret);
+}
